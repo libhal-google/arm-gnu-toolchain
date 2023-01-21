@@ -11,5 +11,5 @@ on:
 
 jobs:
   checks:
-    uses: libhal/gnu-arm-embedded-toolchain/workflows/deploy.yml@main
+    uses: libhal/gnu-arm-embedded-toolchain/.github/workflows/deploy.yml@main
     secrets: inherit
