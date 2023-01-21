@@ -12,7 +12,7 @@ class GnuArmEmbeddedToolchain(ConanFile):
     # All changes to the version number will be in patch. The first two numbers
     # Represent the GCC version. The patch number represents changes to the
     # recipe or toolchain.cmake file
-    version = "11.3.0"
+    version = "12.2.0"
     license = "GPL-3.0-only"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
@@ -34,13 +34,15 @@ class GnuArmEmbeddedToolchain(ConanFile):
     @property
     def download_link(self):
         if self.settings.os == "Windows":
-            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v11.3/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi.zip"
+            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v12.2/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip"
         if str(self.settings.arch).startswith("arm") and self.settings.os == "Linux":
-            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v11.3/arm-gnu-toolchain-11.3.rel1-aarch64-arm-none-eabi.tar.xz"
+            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v12.2/arm-gnu-toolchain-12.2.rel1-aarch64-arm-none-eabi.tar.xz"
         if self.settings.arch == "x86_64" and self.settings.os == "Linux":
-            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v11.3/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz",
-        if self.settings.os == "Macos":
-            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v11.3/arm-gnu-toolchain-11.3.rel1-darwin-x86_64-arm-none-eabi.tar.xz"
+            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v12.2/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz"
+        if self.settings.arch == "x86_64" and self.settings.os == "Macos":
+            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v12.2/arm-gnu-toolchain-12.2.rel1-darwin-x86_64-arm-none-eabi.tar.xz"
+        if str(self.settings.arch).startswith("arm") and self.settings.os == "Macos":
+            return "https://github.com/libhal/gnu-arm-embedded-toolchain/releases/download/v12.2/arm-gnu-toolchain-12.2.rel1-darwin-aarch64-arm-none-eabi.tar.xz"
         else:
             raise ConanInvalidConfiguration(
                 f"The OS {self.settings.os} and architecture {self.settings.arch} is not supported")
